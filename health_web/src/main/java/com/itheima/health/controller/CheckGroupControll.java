@@ -85,4 +85,16 @@ public class CheckGroupControll {
         return new Result(true, MessageConstant.EDIT_CHECKGROUP_SUCCESS);
     }
 
+    /**
+     * 通过id删除检查组
+     * @param id
+     * @return
+     */
+    @PostMapping("/deleteById")
+    public Result deleteById(int id){
+        //调用服务层，删除检查组
+        checkGroupService.deleteById(id);
+        return new Result(true,MessageConstant.DELETE_CHECKGROUP_SUCCESS);
+    }
+
 }

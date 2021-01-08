@@ -7,6 +7,7 @@ import com.github.pagehelper.StringUtil;
 import com.itheima.health.dao.CheckGroupDao;
 import com.itheima.health.entity.PageResult;
 import com.itheima.health.entity.QueryPageBean;
+import com.itheima.health.exception.MyException;
 import com.itheima.health.pojo.CheckGroup;
 import com.itheima.health.pojo.CheckItem;
 import com.itheima.health.service.CheckGroupService;
@@ -110,5 +111,27 @@ public class CheckGroupServiceImpl implements CheckGroupService {
             }
         }
         // 添加事务控制
+    }
+
+    /**
+     * 通过id删除检查组
+     * @param id
+     * @throws MyException
+     */
+    @Override
+    // 事务控制
+    @Transactional
+    public void deleteById(int id) throws MyException {
+        // 通过检查组id查询是否被套餐使用了
+        int count = checkGroupDao.findCountByCheckGroupId(id);
+        // 使用了，抛出异常
+        if (count > 0){
+            throw new MyException("该检查组被使用了，不能删除！");
+        }
+        // 没使用，删除检查组与检查项的关系
+        checkGroupDao.deleteCheckGroupCheckItem(id);
+        // 删除检查组
+        checkGroupDao.deleteById(id);
+
     }
 }

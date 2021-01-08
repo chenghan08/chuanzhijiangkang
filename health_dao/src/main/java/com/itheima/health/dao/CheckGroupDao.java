@@ -58,4 +58,17 @@ public interface CheckGroupDao {
      * @param id
      */
     void deleteCheckGroupCheckItem(Integer id);
+
+    /**
+     * 通过检查组被套餐使用的个数
+     * @param id
+     * @return
+     */
+    int findCountByCheckGroupId(int id);
+
+    /**
+     * 删除检查组
+     * @param id
+     */
+    void deleteById(int id);
 }

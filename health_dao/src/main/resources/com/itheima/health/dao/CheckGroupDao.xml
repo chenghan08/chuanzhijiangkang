@@ -13,7 +13,7 @@
     <!-- 添加检查组于检查项的关系 -->
     <insert id="addCheckGroupCheckItem" parameterType="int">
         insert into t_checkgroup_checkitem(checkgroup_id,checkitem_id)
-        values (checkGroupId,checkitemId)
+        values (#{checkGroupId},#{checkitemId})
     </insert>
 
     <!-- 更新检查组 -->

@@ -30,7 +30,8 @@ public class CheckGroupServiceImpl implements CheckGroupService {
 
     /**
      * 添加检查组
-     * @param checkGroup  检查组信息
+     *
+     * @param checkGroup   检查组信息
      * @param checkitemIds 选中的检查项id数组
      */
     @Override
@@ -41,10 +42,10 @@ public class CheckGroupServiceImpl implements CheckGroupService {
         // 获取检查组的id
         Integer checkGroupId = checkGroup.getId();
         // 遍历选中的检查项的id数组
-        if (null != checkitemIds){
+        if (null != checkitemIds) {
             for (Integer checkitemId : checkitemIds) {
                 // 添加检查组于检查项的关系
-                checkGroupDao.addCheckGroupCheckItem(checkGroupId,checkitemId);
+                checkGroupDao.addCheckGroupCheckItem(checkGroupId, checkitemId);
             }
         }
         // 添加事务控制
@@ -52,6 +53,7 @@ public class CheckGroupServiceImpl implements CheckGroupService {
 
     /**
      * 检查组分页查询
+     *
      * @param queryPageBean
      * @return
      */
@@ -72,6 +74,7 @@ public class CheckGroupServiceImpl implements CheckGroupService {
 
     /**
      * 通过id查询检查组
+     *
      * @param id
      * @return
      */
@@ -82,6 +85,7 @@ public class CheckGroupServiceImpl implements CheckGroupService {
 
     /**
      * 通过检查组id查询选中的检查项
+     *
      * @param id
      * @return
      */
@@ -92,7 +96,8 @@ public class CheckGroupServiceImpl implements CheckGroupService {
 
     /**
      * 修改检查组
-     * @param checkGroup 检查组信息
+     *
+     * @param checkGroup   检查组信息
      * @param checkitemIds 选中的检查项id数组
      * @return
      */
@@ -104,10 +109,10 @@ public class CheckGroupServiceImpl implements CheckGroupService {
         // 先删除旧关系
         checkGroupDao.deleteCheckGroupCheckItem(checkGroup.getId());
         // 遍历选中的检查项id的数组
-        if (null != checkitemIds){
+        if (null != checkitemIds) {
             for (Integer checkitemId : checkitemIds) {
                 // 添加检查组与检查项的关系
-                checkGroupDao.addCheckGroupCheckItem(checkGroup.getId(),checkitemId);
+                checkGroupDao.addCheckGroupCheckItem(checkGroup.getId(), checkitemId);
             }
         }
         // 添加事务控制
@@ -115,6 +120,7 @@ public class CheckGroupServiceImpl implements CheckGroupService {
 
     /**
      * 通过id删除检查组
+     *
      * @param id
      * @throws MyException
      */
@@ -125,7 +131,7 @@ public class CheckGroupServiceImpl implements CheckGroupService {
         // 通过检查组id查询是否被套餐使用了
         int count = checkGroupDao.findCountByCheckGroupId(id);
         // 使用了，抛出异常
-        if (count > 0){
+        if (count > 0) {
             throw new MyException("该检查组被使用了，不能删除！");
         }
         // 没使用，删除检查组与检查项的关系
@@ -133,5 +139,15 @@ public class CheckGroupServiceImpl implements CheckGroupService {
         // 删除检查组
         checkGroupDao.deleteById(id);
 
+    }
+
+    /**
+     * 查询所有检查组
+     *
+     * @return
+     */
+    @Override
+    public List<CheckGroup> findAll() {
+        return checkGroupDao.findAll();
     }
 }

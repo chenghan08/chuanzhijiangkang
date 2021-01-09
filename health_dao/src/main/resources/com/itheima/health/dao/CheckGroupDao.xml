@@ -64,4 +64,9 @@
     <select id="findCountByCheckGroupId" parameterType="int" resultType="java.lang.Integer">
         select count(1) from t_setmeal_checkgroup where checkgroup_id = #{id}
     </select>
+
+    <!-- 查询所有检查组 -->
+    <select id="findAll" resultType="com.itheima.health.pojo.CheckGroup">
+        select * from t_checkgroup
+    </select>
 </mapper>

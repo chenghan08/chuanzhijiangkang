@@ -15,12 +15,14 @@ import java.util.List;
 public interface CheckGroupDao {
     /**
      * 添加检查组
+     *
      * @param checkGroup
      */
     void add(CheckGroup checkGroup);
 
     /**
      * 添加检查组于检查项的关系
+     *
      * @param checkGroupId
      * @param checkitemId
      */
@@ -28,6 +30,7 @@ public interface CheckGroupDao {
 
     /**
      * 条件查询
+     *
      * @param queryString
      * @return
      */
@@ -35,6 +38,7 @@ public interface CheckGroupDao {
 
     /**
      * 通过id查询检查组
+     *
      * @param id
      * @return
      */
@@ -42,6 +46,7 @@ public interface CheckGroupDao {
 
     /**
      * 通过检查组id查询选中的检查项
+     *
      * @param id
      * @return
      */
@@ -49,18 +54,21 @@ public interface CheckGroupDao {
 
     /**
      * 先更新检查组
+     *
      * @param checkGroup
      */
     void update(CheckGroup checkGroup);
 
     /**
      * 删除旧关系
+     *
      * @param id
      */
     void deleteCheckGroupCheckItem(Integer id);
 
     /**
      * 通过检查组被套餐使用的个数
+     *
      * @param id
      * @return
      */
@@ -68,7 +76,15 @@ public interface CheckGroupDao {
 
     /**
      * 删除检查组
+     *
      * @param id
      */
     void deleteById(int id);
+
+    /**
+     * 查询所有检查组
+     *
+     * @return
+     */
+    List<CheckGroup> findAll();
 }

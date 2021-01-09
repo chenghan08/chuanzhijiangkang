@@ -17,13 +17,15 @@ public interface CheckGroupService {
 
     /**
      * 添加检查组
-     * @param checkGroup  检查组信息
+     *
+     * @param checkGroup   检查组信息
      * @param checkitemIds 选中的检查项id数组
      */
     void add(CheckGroup checkGroup, Integer[] checkitemIds);
 
     /**
      * 检查组分页查询
+     *
      * @param queryPageBean
      * @return
      */
@@ -31,6 +33,7 @@ public interface CheckGroupService {
 
     /**
      * 通过id查询检查组
+     *
      * @param id
      * @return
      */
@@ -38,6 +41,7 @@ public interface CheckGroupService {
 
     /**
      * 通过检查组id查询选中的检查项
+     *
      * @param id
      * @return
      */
@@ -45,7 +49,8 @@ public interface CheckGroupService {
 
     /**
      * 修改检查组
-     * @param checkGroup 检查组信息
+     *
+     * @param checkGroup   检查组信息
      * @param checkitemIds 选中的检查项id数组
      * @return
      */
@@ -53,7 +58,15 @@ public interface CheckGroupService {
 
     /**
      * 通过id删除检查组
+     *
      * @param id
      */
     void deleteById(int id) throws MyException;
+
+    /**
+     * 查询所有检查组
+     *
+     * @return
+     */
+    List<CheckGroup> findAll();
 }

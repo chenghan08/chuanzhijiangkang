@@ -66,5 +66,10 @@
         select count(1) from t_order where setmeal_id = #{id}
     </select>
 
+    <!-- 查询套餐上的所有图片 -->
+    <select id="findImgs"  resultType="java.lang.String">
+        select img from t_setmeal
+    </select>
+
 
 </mapper>

@@ -80,4 +80,11 @@ public interface SetmealDao {
      * @param id
      */
     void deleteById(int id);
+
+    /**
+     * 查询套餐上的所有图片
+     * @return
+     */
+    List<String> findImgs();
+
 }

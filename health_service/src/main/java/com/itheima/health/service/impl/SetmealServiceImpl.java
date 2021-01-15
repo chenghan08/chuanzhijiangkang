@@ -35,7 +35,7 @@ public class SetmealServiceImpl implements SetmealService {
      */
     @Override
     @Transactional
-    public void add(Setmeal setmeal, Integer[] checkgroupIds) {
+    public Integer add(Setmeal setmeal, Integer[] checkgroupIds) {
         // 先添加套餐
         setmealDao.add(setmeal);
         // 获取套餐的id
@@ -46,6 +46,7 @@ public class SetmealServiceImpl implements SetmealService {
             setmealDao.addSetmealCheckGroup(setmealId, checkgroupId);
         }
         //事务控制
+        return setmealId;
     }
 
     /**

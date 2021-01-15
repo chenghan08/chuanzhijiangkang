@@ -23,16 +23,24 @@
     <div class="contentBox">
         <div class="card">
             <div class="project-img">
-                <img src="http://qmld5x5bv.hn-bkt.clouddn.com/898ed8b5-b320-4745-b388-fc6a8b33db9a.jpg" width="100%" height="100%" />
+                <img src="${setmeal.img}" width="100%" height="100%" />
             </div>
             <div class="project-text">
-                <h4 class="tit">粉红珍爱(女)升级TM12项筛查体检套餐</h4>
-                <p class="subtit">本套餐针对宫颈(TCT检查、HPV乳头瘤病毒筛查）、乳腺（彩超，癌抗125），甲状腺（彩超，甲功验血）以及胸片，血常规肝功等有全面检查，非常适合女性全面疾病筛查使用。</p>
+                <h4 class="tit">${setmeal.name}</h4>
+                <p class="subtit">${setmeal.remark}</p>
                 <p class="keywords">
                     <span>
+                        <#if setmeal.sex=='0'>
+                            性别不限
+                        <#else>
+                            <#if setmeal.sex=='1'>
+                                男
+                            <#else>
                                 女
+                            </#if>
+                        </#if>
                     </span>
-                    <span>18-60</span>
+                    <span>${setmeal.age}</span>
                 </p>
             </div>
         </div>
@@ -49,37 +57,23 @@
                 </div>
                 <div class="table-content">
                     <ul class="table-list">
+                        <#list setmeal.checkGroups as checkgroup>
                             <li class="table-item">
-                                <div class="item flex2">子宫附件彩超</div>
+                                <div class="item flex2">${checkgroup.name}</div>
                                 <div class="item flex3">
+                                    <#list checkgroup.checkItems as checkitem>
                                         <label>
-                                            子宫
+                                            ${checkitem.name}
                                         </label>
-                                        <label>
-                                            附件
-                                        </label>
+                                    </#list>
                                 </div>
-                                <div class="item flex3">子宫附件彩超</div>
+                                <div class="item flex3">${checkgroup.remark}</div>
                             </li>
-                            <li class="table-item">
-                                <div class="item flex2">胆红素三项</div>
-                                <div class="item flex3">
-                                        <label>
-                                            总胆红素
-                                        </label>
-                                        <label>
-                                            直接胆红素
-                                        </label>
-                                        <label>
-                                            间接胆红素
-                                        </label>
-                                </div>
-                                <div class="item flex3">胆红素三项</div>
-                            </li>
+                        </#list>
                     </ul>
                 </div>
                 <div class="box-button">
-                    <a href="orderInfo.html?id=13" class="order-btn">立即预约</a>
+                    <a href="orderInfo.html?id=${setmeal.id}" class="order-btn">立即预约</a>
                 </div>
             </div>
         </div>

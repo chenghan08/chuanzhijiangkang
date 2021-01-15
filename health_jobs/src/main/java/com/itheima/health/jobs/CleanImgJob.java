@@ -16,7 +16,7 @@ import java.util.List;
  * @Author: chengHan
  * @Date: 2021/1/10 17:56
  */
-@Component
+//@Component
 public class CleanImgJob {
 
 

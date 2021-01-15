@@ -20,7 +20,7 @@ public interface SetmealService {
      * @param setmeal
      * @param checkgroupIds
      */
-    void add(Setmeal setmeal, Integer[] checkgroupIds);
+    Integer add(Setmeal setmeal, Integer[] checkgroupIds);
 
     /**
      * 分页条件查询
